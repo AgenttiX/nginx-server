@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  nginx:
+    container_name: nginx
+    build: .
+    volumes:
+      - ./logs:/var/log/nginx
+      - ./config/conf.d:/etc/nginx/conf.d:ro
+      - ./dhparam:/etc/nginx/dhparam
+      # - ./certbot/conf:/certbot:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    labels:
+      - "com.centurylinklabs.watchtower.scope=nginx"
+    restart: always
+  watchtower:
+    container_name: nginx-watchtower
+    hostname: watchtower
+    image: containrrr/watchtower:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Run once a week on Sunday at 03:30
+    command: --cleanup --schedule "0 30 3 * * 0" --scope nginx
+    labels:
+      - "com.centurylinklabs.watchtower.scope=nginx"
+    restart: always
