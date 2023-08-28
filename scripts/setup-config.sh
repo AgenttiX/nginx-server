@@ -31,7 +31,7 @@ else
   if [ -f "${NGINX_CONF}" ]; then
     mv "${NGINX_CONF}" "${NGINX_CONF}-old"
   fi
-  ln -s "${REPO_DIR}/config/nginx.conf" "${NGINX_CONF}"
+  ln -s "${REPO_DIR}/config/nginx-ubuntu.conf" "${NGINX_CONF}"
 fi
 
 if [ -f "${NGINX_CONF_DIR}/sites-enabled/default" ]; then
