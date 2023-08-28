@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
-# Install openssl for Diffie-Hellman parameter generation
-RUN apk add --no-cache openssl
+# Install bash to support custom scripts and openssl for Diffie-Hellman parameter generation
+RUN apk add --no-cache bash openssl
 
 COPY config /etc/nginx/conf.d
 RUN chmod 0444 /etc/nginx/conf.d -R
