@@ -1,6 +1,8 @@
 name: Publish Docker image
 
-on: push
+on:
+  push:
+  workflow_call:
 #  release:
 #    types: [published]
 #  workflow_run:
