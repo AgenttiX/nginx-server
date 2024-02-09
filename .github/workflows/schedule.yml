@@ -15,7 +15,7 @@ jobs:
         uses: lucacome/docker-image-update-checker@v1
         with:
           base-image: nginx:alpine
-          image: agenttix/nginx:latest
+          image: agenttix/nginx:main
       - name: Publish if an update is available
         uses: ./.github/workflows/publish.yml
         if: steps.check.outputs.needs-updating == 'true'
