@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+set -eu
 
 DHPARAM_DIR="/etc/nginx/dhparam"
 DHPARAM="${DHPARAM_DIR}/dhparam.pem"
