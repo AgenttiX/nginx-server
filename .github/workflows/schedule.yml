@@ -1,22 +1,18 @@
 name: Scheduled update check
-
 on:
   schedule:
     - cron: "0 3 * * *"
   workflow_dispatch:
-
 jobs:
   update:
     name: Check for updated base image
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: Check whether an update is available
-        uses: lucacome/docker-image-update-checker@v1
+        uses: lucacome/docker-image-update-checker@v3
         with:
           base-image: nginx:alpine
-          image: agenttix/nginx:main
+          image: ghcr.io/agenttix/nginx:main
       - name: Publish if an update is available
         uses: ./.github/workflows/publish.yml
         if: steps.check.outputs.needs-updating == 'true'
