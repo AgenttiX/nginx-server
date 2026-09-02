@@ -10,18 +10,18 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    labels:
-      - "com.centurylinklabs.watchtower.scope=nginx"
+    # labels:
+    #   - "com.centurylinklabs.watchtower.scope=nginx"
     restart: always
-  watchtower:
-    container_name: nginx-watchtower
-    hostname: watchtower
-    image: containrrr/watchtower:latest
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-    # Run once a week on Sunday at 03:30
-    command: --cleanup --schedule "0 30 3 * * 0" --scope nginx
-    labels:
-      - "com.centurylinklabs.watchtower.scope=nginx"
-    restart: always
+  # watchtower:
+  #   container_name: nginx-watchtower
+  #   hostname: watchtower
+  #   image: containrrr/watchtower:latest
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   # Run once a week on Sunday at 03:30
+  #   command: --cleanup --schedule "0 30 3 * * 0" --scope nginx
+  #   labels:
+  #     - "com.centurylinklabs.watchtower.scope=nginx"
+  #   restart: always
